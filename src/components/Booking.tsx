@@ -47,13 +47,33 @@ ${formData.message ? `💬 *Special Requests:*\n${formData.message}` : ""}
 ---
 Sent from Niva Website`;
 
-    // Send to WhatsApp
-    const whatsappNumber = "918553071171";
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    // Open WhatsApp with pre-filled message - use mobile-friendly format
+    const phoneNumber = "918553071171";
+    const encodedMessage = encodeURIComponent(message);
     
-    window.open(whatsappUrl, "_blank");
+    // Try to detect if mobile or desktop
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
-    toast.success("Opening WhatsApp... Please send the message to complete your booking request.");
+    let whatsappUrl;
+    if (isMobile) {
+      // For mobile devices, use the app link
+      whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
+    } else {
+      // For desktop, use web.whatsapp.com
+      whatsappUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+    }
+    
+    // Open in new window
+    const newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    
+    if (newWindow) {
+      toast.success("Opening WhatsApp... Please send the message to complete your booking request.");
+    } else {
+      // If popup was blocked, show alternative
+      toast.error("Please allow popups or click the button below to send via WhatsApp", {
+        duration: 5000,
+      });
+    }
     
     // Reset form
     setFormData({
