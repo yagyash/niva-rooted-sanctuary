@@ -29,7 +29,31 @@ const Booking = () => {
       return;
     }
     
-    toast.success("Booking request submitted! We'll contact you soon.");
+    // Format the booking details for WhatsApp
+    const message = `*New Booking Request - Niva Villa*
+
+📝 *Guest Details:*
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Number of Guests: ${formData.guests}
+
+📅 *Stay Dates:*
+Check-in: ${format(checkIn, "PPP")}
+Check-out: ${format(checkOut, "PPP")}
+
+${formData.message ? `💬 *Special Requests:*\n${formData.message}` : ""}
+
+---
+Sent from Niva Website`;
+
+    // Send to WhatsApp
+    const whatsappNumber = "918553071171";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, "_blank");
+    
+    toast.success("Opening WhatsApp... Please send the message to complete your booking request.");
     
     // Reset form
     setFormData({
