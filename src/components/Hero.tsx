@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import villaExterior from "@/assets/villa-exterior.png";
 
 const Hero = () => {
   const scrollToBooking = () => {
@@ -10,15 +9,18 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Parallax Effect */}
+      {/* Background Placeholder with Gradient */}
       <motion.div 
-        className="absolute inset-0 bg-cover bg-center scale-110"
-        style={{ backgroundImage: `url(${villaExterior})` }}
+        className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-primary/20 scale-110"
         initial={{ scale: 1.2 }}
         animate={{ scale: 1.1 }}
         transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
       >
         <div className="absolute inset-0 bg-hero-gradient" />
+        {/* Placeholder text */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <p className="text-foreground/20 text-2xl font-medium">Hero Image Placeholder</p>
+        </div>
       </motion.div>
 
       {/* Floating Particles Effect */}
@@ -46,7 +48,7 @@ const Hero = () => {
       </div>
 
       {/* Content with Cinematic Text Reveal */}
-      <div className="relative z-10 text-center text-background px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center text-foreground px-4 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -117,7 +119,7 @@ const Hero = () => {
       {/* Scroll Indicator with Pulse Animation */}
       <motion.button
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-background cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-foreground cursor-pointer"
         aria-label="Scroll down"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}
