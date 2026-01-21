@@ -1,12 +1,14 @@
-import { Home, Mountain, Users, Sparkles } from "lucide-react";
+import { Bed, Bath, Sofa, Waves, TreePine, Flame } from "lucide-react";
 import { motion } from "framer-motion";
 
 const About = () => {
   const features = [
-    { icon: Home, text: "3 Spacious Bedrooms" },
-    { icon: Mountain, text: "Stunning Mountain Views" },
-    { icon: Users, text: "Open Courtyard & Terrace" },
-    { icon: Sparkles, text: "Village-Inspired Interiors" },
+    { icon: Bed, text: "2 Spacious Bedrooms" },
+    { icon: Sofa, text: "Cozy Living Room" },
+    { icon: Bath, text: "Attached Bathroom" },
+    { icon: Waves, text: "Swimming Pool" },
+    { icon: TreePine, text: "Lush Garden" },
+    { icon: Flame, text: "Private Bonfire Area" },
   ];
 
   const containerVariants = {
@@ -69,7 +71,7 @@ const About = () => {
         </motion.div>
 
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
