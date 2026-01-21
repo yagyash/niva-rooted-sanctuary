@@ -12,6 +12,8 @@ import bathroom from "@/assets/bathroom.png";
 import livingRoom from "@/assets/living-room.png";
 import diningArea from "@/assets/dining-area.png";
 import bedroomMirror from "@/assets/bedroom-mirror.png";
+import bathroomBamboo from "@/assets/bathroom-bamboo.png";
+import terracottaBathroom from "@/assets/terracotta-bathroom.jpg";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -22,6 +24,8 @@ const Gallery = () => {
     { src: masterBedroom, alt: "Master Bedroom" },
     { src: bedroomStone, alt: "Stone Accent Bedroom" },
     { src: bathroom, alt: "Spa Bathroom" },
+    { src: terracottaBathroom, alt: "Terracotta Bathroom" },
+    { src: bathroomBamboo, alt: "Bamboo Bathroom" },
     { src: livingRoom, alt: "Living Room" },
     { src: diningArea, alt: "Dining Area" },
     { src: bedroomCozy, alt: "Cozy Bedroom" },
