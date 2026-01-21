@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import villaExterior from "@/assets/villa-exterior.png";
 
 const Hero = () => {
   const scrollToBooking = () => {
@@ -9,18 +10,19 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Placeholder with Gradient */}
+      {/* Background Image with Ken Burns Effect */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-primary/20 scale-110"
+        className="absolute inset-0"
         initial={{ scale: 1.2 }}
         animate={{ scale: 1.1 }}
         transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
       >
-        <div className="absolute inset-0 bg-hero-gradient" />
-        {/* Placeholder text */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <p className="text-foreground/20 text-2xl font-medium">Hero Image Placeholder</p>
-        </div>
+        <img 
+          src={villaExterior} 
+          alt="Niva Villa Exterior" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-foreground/40" />
       </motion.div>
 
       {/* Floating Particles Effect */}

@@ -1,18 +1,32 @@
 import { useState } from "react";
-import { X, ImageIcon } from "lucide-react";
+import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+import villaExterior from "@/assets/villa-exterior.png";
+import terraceSunset from "@/assets/terrace-sunset.png";
+import masterBedroom from "@/assets/master-bedroom.png";
+import bedroomStone from "@/assets/bedroom-stone.png";
+import bedroomCozy from "@/assets/bedroom-cozy.png";
+import bedroomWarm from "@/assets/bedroom-warm.png";
+import bathroom from "@/assets/bathroom.png";
+import livingRoom from "@/assets/living-room.png";
+import diningArea from "@/assets/dining-area.png";
+import bedroomMirror from "@/assets/bedroom-mirror.png";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Placeholder images - will be replaced with actual images
   const images = [
-    { src: "", alt: "Villa Exterior" },
-    { src: "", alt: "Pool at Night" },
-    { src: "", alt: "Courtyard at Night" },
-    { src: "", alt: "Bedroom Interior" },
-    { src: "", alt: "Bathroom with Natural Elements" },
-    { src: "", alt: "Bedroom View" },
+    { src: villaExterior, alt: "Villa Exterior" },
+    { src: terraceSunset, alt: "Terrace at Sunset" },
+    { src: masterBedroom, alt: "Master Bedroom" },
+    { src: bedroomStone, alt: "Stone Accent Bedroom" },
+    { src: bathroom, alt: "Spa Bathroom" },
+    { src: livingRoom, alt: "Living Room" },
+    { src: diningArea, alt: "Dining Area" },
+    { src: bedroomCozy, alt: "Cozy Bedroom" },
+    { src: bedroomWarm, alt: "Warm Bedroom" },
+    { src: bedroomMirror, alt: "Bedroom with Mirror" },
   ];
 
   const containerVariants = {
@@ -79,38 +93,27 @@ const Gallery = () => {
               className="relative overflow-hidden rounded-2xl shadow-earth cursor-pointer group aspect-[4/3] bg-muted"
               onClick={() => image.src && setSelectedImage(image.src)}
             >
-              {image.src ? (
-                <>
-                  <motion.img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.15 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  />
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.p
-                    className="absolute bottom-4 left-4 text-background font-medium text-lg"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileHover={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {image.alt}
-                  </motion.p>
-                </>
-              ) : (
-                /* Placeholder */
-                <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-secondary to-muted">
-                  <ImageIcon className="w-12 h-12 text-muted-foreground/50 mb-2" />
-                  <p className="text-muted-foreground/70 text-sm font-medium">{image.alt}</p>
-                  <p className="text-muted-foreground/50 text-xs mt-1">Image placeholder</p>
-                </div>
-              )}
+              <motion.img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover"
+                whileHover={{ scale: 1.15 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.p
+                className="absolute bottom-4 left-4 text-background font-medium text-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileHover={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {image.alt}
+              </motion.p>
             </motion.div>
           ))}
         </motion.div>
